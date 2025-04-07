@@ -2,7 +2,7 @@
 #define PICO_SCHEDULER_H
 
 #include <Arduino.h>
-#include "Arduino-Lists/List.hpp"
+#include "Resources/Arduino-Lists/List.hpp"
 #include "Task.h"
 
 class Scheduler {
