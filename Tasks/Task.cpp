@@ -1,8 +1,6 @@
 #include "Task.h"
 
-typedef void TaskAction();
-
-Task::Task(TaskAction* aAction, long aExecutionCount, unsigned long aIntervalMs, bool aIsImmediate, bool aIsEnabled) {
+Task::Task(void (*aAction)(), long aExecutionCount, unsigned long aIntervalMs, bool aIsImmediate, bool aIsEnabled) {
 	constrain(aIntervalMs, 0UL, TASK_MAX_INTERVAL_MS);
 	id_ = nextTaskId++;
 	action_ = aAction;
@@ -43,7 +41,7 @@ bool Task::isReady() {
 unsigned long Task::getId() {
 	return id_;
 }
-void Task::setAction(TaskAction* newValue) {
+void Task::setAction(void (*newValue)()) {
 	action_ = newValue;
 }
 void Task::setIsEnabled(bool newValue) {
